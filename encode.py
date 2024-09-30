@@ -12,7 +12,7 @@ pixel_size = 2
 async def read_file(file_path):
     loop = asyncio.get_event_loop()
     with open(file_path, 'br') as f:
-        data = await loop.run_in_executor(None, f.read)  # 非同期でファイルを読み込む
+        data = await loop.run_in_executor(None, f.read)
     return data
 
 async def encode_data(data):
@@ -47,10 +47,7 @@ async def list_to_frames(pixel_list, width=320, height=180, pixel_size=1):
     return frames
 
 async def main():
-    # ファイルを非同期で読み込む
     data = await read_file(file_path)
-    
-    # データを非同期でエンコードする
     encoded_file = await encode_data(data)
     
     frames = await list_to_frames(encoded_file, int(width / pixel_size), int(height / pixel_size), pixel_size)
@@ -68,5 +65,4 @@ async def main():
     print(f"{video_name} の作成が完了しました。")
     print(len(encoded_file))
 
-# 非同期関数を実行
 asyncio.run(main())
