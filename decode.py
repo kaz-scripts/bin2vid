@@ -7,7 +7,7 @@ import numpy as np
 
 file_path = r"output_video.avi"
 
-pixel_size = 2
+pixel_size = 2    #for youtube = 4
 pixel = pixel_size ** 2
 
 cap = cv2.VideoCapture(file_path)
